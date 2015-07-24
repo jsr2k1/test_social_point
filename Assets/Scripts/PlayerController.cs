@@ -7,8 +7,11 @@ public class PlayerController : MonoBehaviour
 	bool _isAttacking = false;
 
 	Animator animator;
-	GameController gameController;
+	//GameController gameController;	//Reduce coupling between classes using events
 	NavMeshAgent navMeshAgent;
+
+	public delegate void PlayerDetected();
+	public static event PlayerDetected OnPlayerDetectedEvent;
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -16,7 +19,7 @@ public class PlayerController : MonoBehaviour
 	{
 		navMeshAgent = GetComponent<NavMeshAgent>();
 		animator = transform.FindChild("CHR_M_Viking_A_01").GetComponent<Animator>();
-		gameController = FindObjectOfType<GameController>();
+		//gameController = FindObjectOfType<GameController>();
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -46,7 +49,7 @@ public class PlayerController : MonoBehaviour
 	void killTarget()
 	{
 		_target.GetComponent<EnemyController>().OnKilled();
-		gameController.OnEnemyKilled();
+		//gameController.OnEnemyKilled(); //Not necessary, using events to reduce coupling
 		_isAttacking = false;
 		_target = null;
 	}
@@ -77,7 +80,11 @@ public class PlayerController : MonoBehaviour
 	{
 		animator.SetTrigger("Die");
 		navMeshAgent.Stop();
-		gameController.OnPlayerKilled();
+		//gameController.OnPlayerDetected();
+
+		if(OnPlayerDetectedEvent!=null){
+			OnPlayerDetectedEvent();
+		}
 	}
 }
 

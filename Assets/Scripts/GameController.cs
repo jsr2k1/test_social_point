@@ -31,6 +31,24 @@ public class GameController : MonoBehaviour
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+	void OnEnable()
+	{
+		EnemyController.OnEnemyKilledEvent += OnEnemyKilled;
+		EnemyController.OnCorpseDetectedEvent += OnCorpseDetected;
+		PlayerController.OnPlayerDetectedEvent += OnPlayerDetected;
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	void OnDisable()
+	{
+		EnemyController.OnEnemyKilledEvent -= OnEnemyKilled;
+		EnemyController.OnCorpseDetectedEvent -= OnCorpseDetected;
+		PlayerController.OnPlayerDetectedEvent -= OnPlayerDetected;
+	}
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 	void Update()
 	{
 		//Starting the game
@@ -82,28 +100,31 @@ public class GameController : MonoBehaviour
 	{
 		_remainingEnemies--;
 
+		//All enemies are dead
 		if(_remainingEnemies <= 0){
 			_currentState = EGameState.E_END_GAME_WIN;
 			guiController.OnEndGame(_currentState);
 
+			//Not necessary because all coroutines are disabled when an enemy has been killed
 			//Disable all enemies
-			foreach(EnemyController enemy in getEnemies()){
-				enemy.OnEndGame();
-			}
+			//foreach(EnemyController enemy in getEnemies()){
+			//	enemy.OnEndGame();
+			//}
 		}
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	public void OnPlayerKilled()
+	public void OnPlayerDetected()
 	{
 		_currentState = EGameState.E_END_GAME_PLAYER_DETECTED;
 		guiController.OnEndGame(_currentState);
 
+		//Not necessary because now all enemies are subscribed to the OnPlayerDetectedEvent
 		//Disable all enemies
-		foreach(EnemyController enemy in getEnemies()){
-			enemy.OnEndGame();
-		}
+		//foreach(EnemyController enemy in getEnemies()){
+		//	enemy.OnEndGame();
+		//}
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -112,11 +133,12 @@ public class GameController : MonoBehaviour
 	{
 		_currentState = EGameState.E_END_GAME_CORPSE_DETECTED;
 		guiController.OnEndGame(_currentState);
-				
+
+		//Not necessary because now all enemies are subscribed to the OnCorpseDetectedEvent
 		//Disable all enemies
-		foreach(EnemyController enemy in getEnemies()){
-			enemy.OnEndGame();
-		}
+		//foreach(EnemyController enemy in getEnemies()){
+		//	enemy.OnEndGame();
+		//}
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

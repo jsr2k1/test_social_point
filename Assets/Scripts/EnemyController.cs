@@ -12,6 +12,12 @@ public class EnemyController : MonoBehaviour
 	PlayerController playerController;
 	GameController gameController;
 	Animator animator;
+	
+	public delegate void EnemyKilled();
+	public static event EnemyKilled OnEnemyKilledEvent;
+
+	public delegate void CorpseDetected();
+	public static event CorpseDetected OnCorpseDetectedEvent;
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -29,6 +35,22 @@ public class EnemyController : MonoBehaviour
 		StartCoroutine(CO_ChangeOrientation());
 	}
 	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	void OnEnable()
+	{
+		PlayerController.OnPlayerDetectedEvent += OnEndGame;
+		EnemyController.OnCorpseDetectedEvent += OnEndGame;
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	void OnDisable()
+	{
+		PlayerController.OnPlayerDetectedEvent -= OnEndGame;
+		EnemyController.OnCorpseDetectedEvent -= OnEndGame;
+	}
+	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	void Update()
@@ -42,7 +64,10 @@ public class EnemyController : MonoBehaviour
 			foreach(EnemyController enemy in gameController.getEnemies()){
 				if(enemy.isDead()){
 					if(targetInRange(enemy.transform.position)){
-						gameController.OnCorpseDetected();
+						//gameController.OnCorpseDetected();	//Reduce coupling between classes
+						if(OnCorpseDetectedEvent!=null){
+							OnCorpseDetectedEvent();
+						}
 					}
 				}
 			}
@@ -53,14 +78,13 @@ public class EnemyController : MonoBehaviour
 	//TODO: Mejorar la rotacion de los enemigos. Añadir un poco de random?
 	IEnumerator CO_ChangeOrientation()
 	{
-		yield return  new WaitForSeconds(Random.Range(0f, 2f));
+		yield return new WaitForSeconds(Random.Range(0f, 2f));
 
 		while(true){
 			transform.eulerAngles = new Vector3(0f,targetAngles[_currentAngle], 0f);
 			yield return  new WaitForSeconds(timeToChange);		
 			_currentAngle++;
-			if(_currentAngle >= targetAngles.Length)
-			{
+			if(_currentAngle >= targetAngles.Length){
 				_currentAngle = 0;
 			}
 		}
@@ -74,6 +98,10 @@ public class EnemyController : MonoBehaviour
 		StopAllCoroutines();
 		detectFX.SetActive(false); //TODO: Revisar FX
 		_isDead = true;
+
+		if(OnEnemyKilledEvent!=null){
+			OnEnemyKilledEvent();
+		}
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
