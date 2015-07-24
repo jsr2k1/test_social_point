@@ -36,7 +36,9 @@ public class PlayerController : MonoBehaviour
 					_isAttacking = true;
 					animator.SetTrigger("Attack");
 					GetComponent<NavMeshAgent>().Stop();
-					Invoke("killTarget", 0.25f);
+
+					//Invoke("KillTarget", 0.25f);	//Coroutines has less overhead than Invoke method
+					StartCoroutine(KillTarget());
 				}
 			}
 		}
@@ -45,9 +47,10 @@ public class PlayerController : MonoBehaviour
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//TODO: Sustituir por corutina si es mas optimo ?
-	void killTarget()
+
+	IEnumerator KillTarget()
 	{
+		yield return new WaitForSeconds(0.25f);
 		_target.GetComponent<EnemyController>().OnKilled();
 		//gameController.OnEnemyKilled(); //Not necessary, using events to reduce coupling
 		_isAttacking = false;
@@ -56,7 +59,7 @@ public class PlayerController : MonoBehaviour
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	public void goToPosition(Vector3 position)
+	public void GoToPosition(Vector3 position)
 	{
 		if(!_isAttacking){
 			_target = null;
@@ -66,7 +69,7 @@ public class PlayerController : MonoBehaviour
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	public void goToEnemy(GameObject enemy)
+	public void GoToEnemy(GameObject enemy)
 	{
 		if(!_isAttacking){
 			_target = enemy.GetComponent<EnemyController>();

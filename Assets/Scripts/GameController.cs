@@ -70,10 +70,10 @@ public class GameController : MonoBehaviour
 					if(Physics.Raycast(ray, out hit)){
 						//Attack the enemy
 						if(hit.collider.tag == "Enemy"){
-							playerController.goToEnemy(hit.collider.gameObject);
+							playerController.GoToEnemy(hit.collider.gameObject);
 						}//Move to position
 						else{
-							playerController.goToPosition(hit.point);
+							playerController.GoToPosition(hit.point);
 						}
 					}
 				}

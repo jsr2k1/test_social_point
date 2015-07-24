@@ -59,7 +59,6 @@ public class GUIController : MonoBehaviour
 	public void OnEndGame(GameController.EGameState state)
 	{
 		//_isPlaying = false;
-		background.SetActive(true);
 
 		switch(state)
 		{
@@ -88,6 +87,7 @@ public class GUIController : MonoBehaviour
 	{
 		yield return new WaitForSeconds(1.0f);
 		levelFailedPopUp.SetTrigger("ShowPopUp");
+		background.SetActive(true);
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -96,6 +96,7 @@ public class GUIController : MonoBehaviour
 	{
 		yield return new WaitForSeconds(1.0f);
 		levelCompletedPopUp.SetTrigger("ShowPopUp");
+		background.SetActive(true);
 	}
 }
 
