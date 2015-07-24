@@ -21,12 +21,12 @@ public class EnemyController : MonoBehaviour
 	void Update()
 	{
 		if(!_isDead){
-			// Check player in range
-			if(targetInRange(FindObjectOfType<PlayerController>().transform.position)){
+			//Check player in range
+			if(targetInRange(FindObjectOfType<PlayerController>().transform.position)){ //TODO: Coger en el Start
 				FindObjectOfType<PlayerController>().OnDetected();
 			}
-			// Check corpse in range
-			foreach(EnemyController enemy in FindObjectOfType<GameController>().getEnemies()){
+			//Check corpse in range
+			foreach(EnemyController enemy in FindObjectOfType<GameController>().getEnemies()){ //TODO: Coger en el Start
 				if(enemy.isDead()){
 					if(targetInRange(enemy.transform.position)){
 						FindObjectOfType<GameController>().OnCorpseDetected();
@@ -37,12 +37,12 @@ public class EnemyController : MonoBehaviour
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+	//TODO: Mejorar la rotacion de los enemigos. Añadir un poco de random?
 	IEnumerator CO_ChangeOrientation()
 	{
 		yield return  new WaitForSeconds(Random.Range(0f, 2f));
-		while(true)
-		{
+
+		while(true){
 			transform.eulerAngles = new Vector3(0f,targetAngles[_currentAngle], 0f);
 			yield return  new WaitForSeconds(timeToChange);		
 			_currentAngle++;
@@ -57,9 +57,9 @@ public class EnemyController : MonoBehaviour
 
 	public void OnKilled()
 	{
-		transform.FindChild("CHR_M_OldRanged_A_02").GetComponent<Animator>().SetTrigger("Die");
+		transform.FindChild("CHR_M_OldRanged_A_02").GetComponent<Animator>().SetTrigger("Die"); //TODO: Coger en el Start
 		StopAllCoroutines();
-		detectFX.SetActive(false);
+		detectFX.SetActive(false); //TODO: Revisar FX
 		_isDead = true;
 	}
 

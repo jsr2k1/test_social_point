@@ -47,8 +47,7 @@ public class GameController : MonoBehaviour
 				if(Input.GetMouseButtonDown(0)){
 					RaycastHit hit;
 					Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-					if(Physics.Raycast(ray, out hit))
-					{
+					if(Physics.Raycast(ray, out hit)){
 						//Attack the enemy
 						if(hit.collider.tag == "Enemy"){
 							playerController.goToEnemy(hit.collider.gameObject);

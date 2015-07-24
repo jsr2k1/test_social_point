@@ -24,15 +24,16 @@ public class PlayerController : MonoBehaviour
 				}
 			}
 		}
+		//TODO: Revisar, quizas se puede poner un IF por si acaso
 		transform.FindChild("CHR_M_Viking_A_01").GetComponent<Animator>().SetFloat("LocomotionSpeed", GetComponent<NavMeshAgent>().velocity.magnitude);
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+	//TODO: Sustituir por corutina si es mas opttimo ?
 	void killTarget()
 	{
 		_target.GetComponent<EnemyController>().OnKilled();
-		FindObjectOfType<GameController>().OnEnemyKilled();
+		FindObjectOfType<GameController>().OnEnemyKilled(); //TODO: Coger en el Start
 		_isAttacking = false;
 		_target = null;
 	}
@@ -61,7 +62,7 @@ public class PlayerController : MonoBehaviour
 
 	public void OnDetected()
 	{
-		transform.FindChild("CHR_M_Viking_A_01").GetComponent<Animator>().SetTrigger("Die");
+		transform.FindChild("CHR_M_Viking_A_01").GetComponent<Animator>().SetTrigger("Die"); //TODO: Coger en el start
 		GetComponent<NavMeshAgent>().Stop();
 		FindObjectOfType<GameController>().OnPlayerKilled();
 	}
