@@ -22,6 +22,7 @@ public class EnemyController : MonoBehaviour
 	public int attackStyle;
 	bool bEndGame=false;
 
+	//Patrol
 	NavMeshAgent navMeshAgent;
 	public Transform[] patrolPoints;
 	Vector3 targetPatrolPoint;
