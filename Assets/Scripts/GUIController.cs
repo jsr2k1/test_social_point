@@ -15,6 +15,9 @@ public class GUIController : MonoBehaviour
 	public GameObject background;
 	GameController gameController;
 
+	public Animator levelFailedPopUp;
+	public Animator levelCompletedPopUp;
+
 	//bool _isPlaying = false;
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -61,19 +64,43 @@ public class GUIController : MonoBehaviour
 		switch(state)
 		{
 			case GameController.EGameState.E_END_GAME_WIN: 
-				endGameWin.gameObject.SetActive(true); 
+				//endGameWin.gameObject.SetActive(true);
+				StartCoroutine(ShowLevelCompletedPopUp());
 				break;
 			case GameController.EGameState.E_END_GAME_PLAYER_DETECTED: 
-				endGameLost_PlayerDetected.gameObject.SetActive(true); 
+				//endGameLost_PlayerDetected.gameObject.SetActive(true);
+				StartCoroutine(ShowLevelFailedPopUp());
 				break;
 			case GameController.EGameState.E_END_GAME_CORPSE_DETECTED: 
-				endGameLost_CorpseDetected.gameObject.SetActive(true); 
+				//endGameLost_CorpseDetected.gameObject.SetActive(true); 
+				StartCoroutine(ShowLevelFailedPopUp());
 				break;
 			case GameController.EGameState.E_END_GAME_TIMEOUT: 
-				endGameLost_TimeOut.gameObject.SetActive(true); 
+				//endGameLost_TimeOut.gameObject.SetActive(true); 
+				StartCoroutine(ShowLevelFailedPopUp());
 				break;
 		}
 	}
+
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	IEnumerator ShowLevelFailedPopUp()
+	{
+		yield return new WaitForSeconds(1.0f);
+		levelFailedPopUp.SetTrigger("ShowPopUp");
+	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	IEnumerator ShowLevelCompletedPopUp()
+	{
+		yield return new WaitForSeconds(1.0f);
+		levelCompletedPopUp.SetTrigger("ShowPopUp");
+	}
 }
+
+
+
+
 
 
