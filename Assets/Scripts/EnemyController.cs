@@ -19,6 +19,14 @@ public class EnemyController : MonoBehaviour
 	public delegate void CorpseDetected();
 	public static event CorpseDetected OnCorpseDetectedEvent;
 
+	public int attackStyle;
+	bool bEndGame=false;
+
+	NavMeshAgent navMeshAgent;
+	public Transform[] patrolPoints;
+	Vector3 targetPatrolPoint;
+	int currentPatrolPoint=0;
+
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	void Awake()
@@ -26,13 +34,16 @@ public class EnemyController : MonoBehaviour
 		playerController = FindObjectOfType<PlayerController>();
 		gameController = FindObjectOfType<GameController>();
 		animator = transform.FindChild("CHR_M_OldRanged_A_02").GetComponent<Animator>();
+		navMeshAgent = GetComponent<NavMeshAgent>();
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	void Start()
 	{
-		StartCoroutine(CO_ChangeOrientation());
+		//StartCoroutine(CO_ChangeOrientation());
+		targetPatrolPoint = patrolPoints[0].position;
+		navMeshAgent.SetDestination(targetPatrolPoint);
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -55,9 +66,10 @@ public class EnemyController : MonoBehaviour
 
 	void Update()
 	{
-		if(!_isDead){
+		if(!_isDead && !bEndGame){
 			//Check player in range
 			if(targetInRange(playerController.transform.position)){
+				animator.SetTrigger(attackStyle==1 ? "Attack1" : "Attack2");
 				playerController.OnDetected();
 			}
 			//Check corpse in range
@@ -71,6 +83,14 @@ public class EnemyController : MonoBehaviour
 					}
 				}
 			}
+			//Patrol
+			float distance = Vector3.Distance(transform.position, targetPatrolPoint);
+			if(distance < 0.2f){
+				currentPatrolPoint = (currentPatrolPoint+1)%patrolPoints.Length;
+				targetPatrolPoint = patrolPoints[currentPatrolPoint].position;
+				navMeshAgent.SetDestination(targetPatrolPoint);
+			}
+			animator.SetFloat("LocomotionSpeed", navMeshAgent.velocity.magnitude);
 		}
 	}
 
@@ -96,6 +116,7 @@ public class EnemyController : MonoBehaviour
 	{
 		animator.SetTrigger("Die");
 		StopAllCoroutines();
+		navMeshAgent.Stop();
 		detectFX.SetActive(false); //TODO: Revisar FX
 		_isDead = true;
 
@@ -124,6 +145,7 @@ public class EnemyController : MonoBehaviour
 	public void OnEndGame()
 	{
 		StopAllCoroutines();
+		bEndGame=true;
 	}
 }
 

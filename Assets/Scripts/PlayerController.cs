@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
 				if(distance < 3f){
 					_isAttacking = true;
 					animator.SetTrigger("Attack");
-					GetComponent<NavMeshAgent>().Stop();
+					navMeshAgent.Stop();
 
 					//Invoke("KillTarget", 0.25f);	//Coroutines has less overhead than Invoke method
 					StartCoroutine(KillTarget());
@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
 			}
 		}
 		//TODO: Revisar, quizas se puede poner un IF por si acaso
-		animator.SetFloat("LocomotionSpeed", GetComponent<NavMeshAgent>().velocity.magnitude);
+		animator.SetFloat("LocomotionSpeed", navMeshAgent.velocity.magnitude);
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
