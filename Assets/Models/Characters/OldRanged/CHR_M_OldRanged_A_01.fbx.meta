@@ -1,0 +1,116 @@
+fileFormatVersion: 2
+guid: 90a622b07efb6b74bbe6811b0a522679
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: BON_Coat01
+    100002: BON_Coat02
+    100004: BON_Coat03
+    100006: BON_Coat04
+    100008: BON_Hair
+    100010: BON_Head
+    100012: BON_Hoodie
+    100014: BON_LCalf
+    100016: BON_LFoot
+    100018: BON_LForearm
+    100020: BON_LPalm
+    100022: BON_LThigh
+    100024: BON_LUpperarm
+    100026: BON_Moustache
+    100028: BON_OldRangedWeapon
+    100030: BON_Pelvis
+    100032: BON_RCalf
+    100034: BON_RFoot
+    100036: BON_RForearm
+    100038: BON_RPalm
+    100040: BON_RThigh
+    100042: BON_RUpperarm
+    100044: BON_Shoulder
+    100046: BON_Spine2
+    100048: //RootNode
+    100050: CHR_M_OldRanged_A_01
+    100052: root
+    400000: BON_Coat01
+    400002: BON_Coat02
+    400004: BON_Coat03
+    400006: BON_Coat04
+    400008: BON_Hair
+    400010: BON_Head
+    400012: BON_Hoodie
+    400014: BON_LCalf
+    400016: BON_LFoot
+    400018: BON_LForearm
+    400020: BON_LPalm
+    400022: BON_LThigh
+    400024: BON_LUpperarm
+    400026: BON_Moustache
+    400028: BON_OldRangedWeapon
+    400030: BON_Pelvis
+    400032: BON_RCalf
+    400034: BON_RFoot
+    400036: BON_RForearm
+    400038: BON_RPalm
+    400040: BON_RThigh
+    400042: BON_RUpperarm
+    400044: BON_Shoulder
+    400046: BON_Spine2
+    400048: //RootNode
+    400050: CHR_M_OldRanged_A_01
+    400052: root
+    4300000: CHR_M_OldRanged_A_01
+    9500000: //RootNode
+    13700000: CHR_M_OldRanged_A_01
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 

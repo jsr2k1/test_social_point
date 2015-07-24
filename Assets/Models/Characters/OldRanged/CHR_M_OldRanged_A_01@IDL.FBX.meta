@@ -1,0 +1,191 @@
+fileFormatVersion: 2
+guid: cae550185259cf94c9f5987ae7c12112
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: BON_Coat01
+    100002: BON_Coat02
+    100004: BON_Coat03
+    100006: BON_Coat04
+    100008: BON_Hair
+    100010: BON_Head
+    100012: BON_Hoodie
+    100014: BON_LCalf
+    100016: BON_LFoot
+    100018: BON_LForearm
+    100020: BON_LPalm
+    100022: BON_LThigh
+    100024: BON_LUpperarm
+    100026: BON_Moustache
+    100028: BON_OldRangedWeapon
+    100030: BON_Pelvis
+    100032: BON_RCalf
+    100034: BON_RFoot
+    100036: BON_RForearm
+    100038: BON_RPalm
+    100040: BON_RThigh
+    100042: BON_RUpperarm
+    100044: BON_Shoulder
+    100046: BON_Spine2
+    100048: //RootNode
+    100050: root
+    400000: BON_Coat01
+    400002: BON_Coat02
+    400004: BON_Coat03
+    400006: BON_Coat04
+    400008: BON_Hair
+    400010: BON_Head
+    400012: BON_Hoodie
+    400014: BON_LCalf
+    400016: BON_LFoot
+    400018: BON_LForearm
+    400020: BON_LPalm
+    400022: BON_LThigh
+    400024: BON_LUpperarm
+    400026: BON_Moustache
+    400028: BON_OldRangedWeapon
+    400030: BON_Pelvis
+    400032: BON_RCalf
+    400034: BON_RFoot
+    400036: BON_RForearm
+    400038: BON_RPalm
+    400040: BON_RThigh
+    400042: BON_RUpperarm
+    400044: BON_Shoulder
+    400046: BON_Spine2
+    400048: //RootNode
+    400050: root
+    7400000: IDL
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: IDL
+      takeName: CHR_M_OldRanged_A_01@IDL
+      firstFrame: 0
+      lastFrame: 50
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: BON_Coat01
+        weight: 1
+      - path: BON_Coat02
+        weight: 1
+      - path: BON_Coat03
+        weight: 1
+      - path: BON_Coat04
+        weight: 1
+      - path: BON_Hair
+        weight: 1
+      - path: BON_Head
+        weight: 1
+      - path: BON_Hoodie
+        weight: 1
+      - path: BON_LCalf
+        weight: 1
+      - path: BON_LFoot
+        weight: 1
+      - path: BON_LForearm
+        weight: 1
+      - path: BON_LPalm
+        weight: 1
+      - path: BON_LThigh
+        weight: 1
+      - path: BON_LUpperarm
+        weight: 1
+      - path: BON_Moustache
+        weight: 1
+      - path: BON_OldRangedWeapon
+        weight: 1
+      - path: BON_Pelvis
+        weight: 1
+      - path: BON_RCalf
+        weight: 1
+      - path: BON_RFoot
+        weight: 1
+      - path: BON_RForearm
+        weight: 1
+      - path: BON_RPalm
+        weight: 1
+      - path: BON_RThigh
+        weight: 1
+      - path: BON_RUpperarm
+        weight: 1
+      - path: BON_Shoulder
+        weight: 1
+      - path: BON_Spine2
+        weight: 1
+      - path: root
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 

@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1011 &101100000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: upperBody
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: CHMP_
+    m_Weight: 1
+  - m_Path: chmp_hero_a_01
+    m_Weight: 1
+  - m_Path: chmp_hero_a_01_arm_L
+    m_Weight: 1
+  - m_Path: chmp_hero_a_01_arm_R
+    m_Weight: 1
+  - m_Path: chmp_hero_a_01_pelvis_L
+    m_Weight: 1
+  - m_Path: chmp_hero_a_01_pelvis_R
+    m_Weight: 1
+  - m_Path: chmp_hero_a_01_shoulder_L
+    m_Weight: 1
+  - m_Path: chmp_hero_a_01_shoulder_R
+    m_Weight: 1
+  - m_Path: CHMP_Pelvis
+    m_Weight: 1
+  - m_Path: CHMP_Pelvis/CHMP_LThigh
+    m_Weight: 1
+  - m_Path: CHMP_Pelvis/CHMP_LThigh/CHMP_LCalf
+    m_Weight: 1
+  - m_Path: CHMP_Pelvis/CHMP_LThigh/CHMP_LCalf/CHMP_LFoot
+    m_Weight: 1
+  - m_Path: CHMP_Pelvis/CHMP_PelvisBone001
+    m_Weight: 1
+  - m_Path: CHMP_Pelvis/CHMP_PelvisBone002
+    m_Weight: 1
+  - m_Path: CHMP_Pelvis/CHMP_RThigh
+    m_Weight: 1
+  - m_Path: CHMP_Pelvis/CHMP_RThigh/CHMP_RCalf
+    m_Weight: 1
+  - m_Path: CHMP_Pelvis/CHMP_RThigh/CHMP_RCalf/CHMP_RFoot
+    m_Weight: 1
+  - m_Path: CHMP_Pelvis/CHMP_Spine1
+    m_Weight: 1
+  - m_Path: CHMP_Pelvis/CHMP_Spine1/CHMP_Spine2
+    m_Weight: 1
+  - m_Path: CHMP_Pelvis/CHMP_Spine1/CHMP_Spine2/CHMP_Ribcage
+    m_Weight: 1
+  - m_Path: CHMP_Pelvis/CHMP_Spine1/CHMP_Spine2/CHMP_Ribcage/CHMP_LCollarbone
+    m_Weight: 1
+  - m_Path: CHMP_Pelvis/CHMP_Spine1/CHMP_Spine2/CHMP_Ribcage/CHMP_LCollarbone/CHMP_LUpperarm
+    m_Weight: 1
+  - m_Path: CHMP_Pelvis/CHMP_Spine1/CHMP_Spine2/CHMP_Ribcage/CHMP_LCollarbone/CHMP_LUpperarm/CHMP_LForearm
+    m_Weight: 1
+  - m_Path: CHMP_Pelvis/CHMP_Spine1/CHMP_Spine2/CHMP_Ribcage/CHMP_LCollarbone/CHMP_LUpperarm/CHMP_LForearm/CHMP_LPalm
+    m_Weight: 1
+  - m_Path: CHMP_Pelvis/CHMP_Spine1/CHMP_Spine2/CHMP_Ribcage/CHMP_Neck
+    m_Weight: 1
+  - m_Path: CHMP_Pelvis/CHMP_Spine1/CHMP_Spine2/CHMP_Ribcage/CHMP_Neck/CHMP_Head
+    m_Weight: 1
+  - m_Path: CHMP_Pelvis/CHMP_Spine1/CHMP_Spine2/CHMP_Ribcage/CHMP_Neck/CHMP_Head/CHMP_HeadBone001
+    m_Weight: 1
+  - m_Path: CHMP_Pelvis/CHMP_Spine1/CHMP_Spine2/CHMP_Ribcage/CHMP_RCollarbone
+    m_Weight: 1
+  - m_Path: CHMP_Pelvis/CHMP_Spine1/CHMP_Spine2/CHMP_Ribcage/CHMP_RCollarbone/CHMP_RUpperarm
+    m_Weight: 1
+  - m_Path: CHMP_Pelvis/CHMP_Spine1/CHMP_Spine2/CHMP_Ribcage/CHMP_RCollarbone/CHMP_RUpperarm/CHMP_RForearm
+    m_Weight: 1
+  - m_Path: CHMP_Pelvis/CHMP_Spine1/CHMP_Spine2/CHMP_Ribcage/CHMP_RCollarbone/CHMP_RUpperarm/CHMP_RForearm/CHMP_RPalm
+    m_Weight: 1
+  - m_Path: CHMP_Pelvis/CHMP_Spine1/CHMP_Spine2/CHMP_Ribcage/CHMP_RibcageBone001
+    m_Weight: 1
+  - m_Path: CHMP_Pelvis/CHMP_Spine1/CHMP_Spine2/CHMP_Ribcage/CHMP_RibcageBone002
+    m_Weight: 1
+  - m_Path: Dummy_sword
+    m_Weight: 1
+  - m_Path: root
+    m_Weight: 1
