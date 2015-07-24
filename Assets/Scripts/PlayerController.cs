@@ -6,6 +6,19 @@ public class PlayerController : MonoBehaviour
 	EnemyController _target = null;
 	bool _isAttacking = false;
 
+	Animator animator;
+	GameController gameController;
+	NavMeshAgent navMeshAgent;
+
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	void Awake()
+	{
+		navMeshAgent = GetComponent<NavMeshAgent>();
+		animator = transform.FindChild("CHR_M_Viking_A_01").GetComponent<Animator>();
+		gameController = FindObjectOfType<GameController>();
+	}
+
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	void Update()
@@ -18,22 +31,22 @@ public class PlayerController : MonoBehaviour
 				//Close enought to an enemy -> Attack
 				if(distance < 3f){
 					_isAttacking = true;
-					transform.FindChild("CHR_M_Viking_A_01").GetComponent<Animator>().SetTrigger("Attack"); //TODO: Obtener la referencia en el Start
+					animator.SetTrigger("Attack");
 					GetComponent<NavMeshAgent>().Stop();
 					Invoke("killTarget", 0.25f);
 				}
 			}
 		}
 		//TODO: Revisar, quizas se puede poner un IF por si acaso
-		transform.FindChild("CHR_M_Viking_A_01").GetComponent<Animator>().SetFloat("LocomotionSpeed", GetComponent<NavMeshAgent>().velocity.magnitude);
+		animator.SetFloat("LocomotionSpeed", GetComponent<NavMeshAgent>().velocity.magnitude);
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//TODO: Sustituir por corutina si es mas opttimo ?
+	//TODO: Sustituir por corutina si es mas optimo ?
 	void killTarget()
 	{
 		_target.GetComponent<EnemyController>().OnKilled();
-		FindObjectOfType<GameController>().OnEnemyKilled(); //TODO: Coger en el Start
+		gameController.OnEnemyKilled();
 		_isAttacking = false;
 		_target = null;
 	}
@@ -44,7 +57,7 @@ public class PlayerController : MonoBehaviour
 	{
 		if(!_isAttacking){
 			_target = null;
-			GetComponent<NavMeshAgent>().SetDestination(position);
+			navMeshAgent.SetDestination(position);
 		}
 	}
 
@@ -54,7 +67,7 @@ public class PlayerController : MonoBehaviour
 	{
 		if(!_isAttacking){
 			_target = enemy.GetComponent<EnemyController>();
-			GetComponent<NavMeshAgent>().SetDestination(enemy.transform.position);
+			navMeshAgent.SetDestination(enemy.transform.position);
 		}
 	}
 
@@ -62,9 +75,9 @@ public class PlayerController : MonoBehaviour
 
 	public void OnDetected()
 	{
-		transform.FindChild("CHR_M_Viking_A_01").GetComponent<Animator>().SetTrigger("Die"); //TODO: Coger en el start
-		GetComponent<NavMeshAgent>().Stop();
-		FindObjectOfType<GameController>().OnPlayerKilled();
+		animator.SetTrigger("Die");
+		navMeshAgent.Stop();
+		gameController.OnPlayerKilled();
 	}
 }
 

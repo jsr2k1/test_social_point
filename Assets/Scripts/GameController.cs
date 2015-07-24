@@ -4,6 +4,7 @@ using System.Collections;
 public class GameController : MonoBehaviour
 {
 	public PlayerController playerController;
+	GUIController guiController;
 
 	public enum EGameState{
 		E_START_GAME,
@@ -16,7 +17,7 @@ public class GameController : MonoBehaviour
 	int _remainingEnemies;
 	EnemyController[] _aEnemies;
 	float _countDownValue = 15f;
-	EGameState _currentState = EGameState.E_START_GAME; 
+	EGameState _currentState = EGameState.E_START_GAME;
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -25,6 +26,7 @@ public class GameController : MonoBehaviour
 		Input.simulateMouseWithTouches = true;
 		_aEnemies = FindObjectsOfType<EnemyController>();
 		_remainingEnemies = _aEnemies.Length;
+		guiController = FindObjectOfType<GUIController>();
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -70,7 +72,7 @@ public class GameController : MonoBehaviour
 
 	public void OnStartGame()
 	{
-		FindObjectOfType<GUIController>().OnStartGame();
+		guiController.OnStartGame();
 		_currentState = EGameState.E_INGAME;
 	}
 
@@ -79,12 +81,13 @@ public class GameController : MonoBehaviour
 	public void OnEnemyKilled()
 	{
 		_remainingEnemies--;
+
 		if(_remainingEnemies <= 0){
 			_currentState = EGameState.E_END_GAME_WIN;
-			FindObjectOfType<GUIController>().OnEndGame(_currentState);
+			guiController.OnEndGame(_currentState);
 
 			//Disable all enemies
-			foreach(EnemyController enemy in FindObjectOfType<GameController>().getEnemies()){
+			foreach(EnemyController enemy in getEnemies()){
 				enemy.OnEndGame();
 			}
 		}
@@ -95,10 +98,10 @@ public class GameController : MonoBehaviour
 	public void OnPlayerKilled()
 	{
 		_currentState = EGameState.E_END_GAME_PLAYER_DETECTED;
-		FindObjectOfType<GUIController>().OnEndGame(_currentState);
+		guiController.OnEndGame(_currentState);
 
 		//Disable all enemies
-		foreach(EnemyController enemy in FindObjectOfType<GameController>().getEnemies()){
+		foreach(EnemyController enemy in getEnemies()){
 			enemy.OnEndGame();
 		}
 	}
@@ -108,10 +111,10 @@ public class GameController : MonoBehaviour
 	public void OnCorpseDetected()
 	{
 		_currentState = EGameState.E_END_GAME_CORPSE_DETECTED;
-		FindObjectOfType<GUIController>().OnEndGame(_currentState);
+		guiController.OnEndGame(_currentState);
 				
 		//Disable all enemies
-		foreach(EnemyController enemy in FindObjectOfType<GameController>().getEnemies()){
+		foreach(EnemyController enemy in getEnemies()){
 			enemy.OnEndGame();
 		}
 	}
@@ -121,7 +124,7 @@ public class GameController : MonoBehaviour
 	public void OnTimeOut()
 	{
 		_currentState = EGameState.E_END_GAME_TIMEOUT;
-		FindObjectOfType<GUIController>().OnEndGame(_currentState); //TODO: Obtener la referencia en el Start
+		guiController.OnEndGame(_currentState);
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -9,6 +9,19 @@ public class EnemyController : MonoBehaviour
 	int _currentAngle = 0;
 	bool _isDead = false;
 
+	PlayerController playerController;
+	GameController gameController;
+	Animator animator;
+
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	void Awake()
+	{
+		playerController = FindObjectOfType<PlayerController>();
+		gameController = FindObjectOfType<GameController>();
+		animator = transform.FindChild("CHR_M_OldRanged_A_02").GetComponent<Animator>();
+	}
+
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	void Start()
@@ -22,14 +35,14 @@ public class EnemyController : MonoBehaviour
 	{
 		if(!_isDead){
 			//Check player in range
-			if(targetInRange(FindObjectOfType<PlayerController>().transform.position)){ //TODO: Coger en el Start
-				FindObjectOfType<PlayerController>().OnDetected();
+			if(targetInRange(playerController.transform.position)){
+				playerController.OnDetected();
 			}
 			//Check corpse in range
-			foreach(EnemyController enemy in FindObjectOfType<GameController>().getEnemies()){ //TODO: Coger en el Start
+			foreach(EnemyController enemy in gameController.getEnemies()){
 				if(enemy.isDead()){
 					if(targetInRange(enemy.transform.position)){
-						FindObjectOfType<GameController>().OnCorpseDetected();
+						gameController.OnCorpseDetected();
 					}
 				}
 			}
@@ -57,7 +70,7 @@ public class EnemyController : MonoBehaviour
 
 	public void OnKilled()
 	{
-		transform.FindChild("CHR_M_OldRanged_A_02").GetComponent<Animator>().SetTrigger("Die"); //TODO: Coger en el Start
+		animator.SetTrigger("Die");
 		StopAllCoroutines();
 		detectFX.SetActive(false); //TODO: Revisar FX
 		_isDead = true;

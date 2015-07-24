@@ -13,8 +13,16 @@ public class GUIController : MonoBehaviour
 	public Text endGameLost_TimeOut;
 
 	public GameObject background;
+	GameController gameController;
 
 	//bool _isPlaying = false;
+
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	void Awake()
+	{
+		gameController = FindObjectOfType<GameController>();
+	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -28,8 +36,8 @@ public class GUIController : MonoBehaviour
 
 	void Update()
 	{
-		int sec =(int)FindObjectOfType<GameController>().getCountDown();
-		int milli =(int)((FindObjectOfType<GameController>().getCountDown() - sec) * 100);
+		int sec =(int)gameController.getCountDown();
+		int milli =(int)((gameController.getCountDown() - sec) * 100);
 		countDownSec.text = sec.ToString("00");
 		countDownMiliSec.text = milli.ToString("00");
 	}
