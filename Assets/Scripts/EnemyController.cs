@@ -76,6 +76,7 @@ public class EnemyController : MonoBehaviour
 				animator.SetTrigger(attackStyle==1 ? "Attack1" : "Attack2");
 				bulletFX.particleSystem.Play();
 				playerController.OnDetected();
+				audio.Play();
 			}
 			//Check corpse in range
 			foreach(EnemyController enemy in gameController.getEnemies()){
