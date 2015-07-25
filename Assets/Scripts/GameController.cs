@@ -16,7 +16,7 @@ public class GameController : MonoBehaviour
 	}
 	int _remainingEnemies;
 	EnemyController[] _aEnemies;
-	float _countDownValue = 1500f;	//TODO: Change this to 15
+	float _countDownValue = 15f;
 	EGameState _currentState = EGameState.E_START_GAME;
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

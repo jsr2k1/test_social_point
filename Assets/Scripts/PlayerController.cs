@@ -42,7 +42,6 @@ public class PlayerController : MonoBehaviour
 				}
 			}
 		}
-		//TODO: Revisar, quizas se puede poner un IF por si acaso
 		animator.SetFloat("LocomotionSpeed", navMeshAgent.velocity.magnitude);
 	}
 
