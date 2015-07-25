@@ -6,7 +6,7 @@ public class EnemyController : MonoBehaviour
 	public GameObject detectFX;
 	public float[] targetAngles;
 	public float timeToChange = 2f;
-	int _currentAngle = 0;
+	//int _currentAngle = 0;
 	bool _isDead = false;
 
 	PlayerController playerController;
@@ -27,6 +27,8 @@ public class EnemyController : MonoBehaviour
 	public Transform[] patrolPoints;
 	Vector3 targetPatrolPoint;
 	int currentPatrolPoint=0;
+	
+	public Transform bulletFX;
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -67,10 +69,12 @@ public class EnemyController : MonoBehaviour
 
 	void Update()
 	{
-		if(!_isDead && !bEndGame){
+		if(!_isDead && !bEndGame)
+		{
 			//Check player in range
 			if(targetInRange(playerController.transform.position)){
 				animator.SetTrigger(attackStyle==1 ? "Attack1" : "Attack2");
+				bulletFX.particleSystem.Play();
 				playerController.OnDetected();
 			}
 			//Check corpse in range
@@ -92,11 +96,13 @@ public class EnemyController : MonoBehaviour
 				navMeshAgent.SetDestination(targetPatrolPoint);
 			}
 			animator.SetFloat("LocomotionSpeed", navMeshAgent.velocity.magnitude);
+		}else{
+			animator.SetFloat("LocomotionSpeed", 0);
 		}
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//TODO: Mejorar la rotacion de los enemigos. Añadir un poco de random?
+	/*With the patrol system this is not necessary anymore
 	IEnumerator CO_ChangeOrientation()
 	{
 		yield return new WaitForSeconds(Random.Range(0f, 2f));
@@ -110,15 +116,15 @@ public class EnemyController : MonoBehaviour
 			}
 		}
 	}
-
+	*/
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	public void OnKilled()
 	{
 		animator.SetTrigger("Die");
-		StopAllCoroutines();
+		//StopAllCoroutines();
 		navMeshAgent.Stop();
-		detectFX.SetActive(false); //TODO: Revisar FX
+		detectFX.SetActive(false);
 		_isDead = true;
 
 		if(OnEnemyKilledEvent!=null){
@@ -145,8 +151,10 @@ public class EnemyController : MonoBehaviour
 
 	public void OnEndGame()
 	{
-		StopAllCoroutines();
+		//StopAllCoroutines();
 		bEndGame=true;
+		animator.SetFloat("LocomotionSpeed", 0);
+		navMeshAgent.Stop();
 	}
 }
 

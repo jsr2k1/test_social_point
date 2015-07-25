@@ -85,18 +85,18 @@ public class GUIController : MonoBehaviour
 
 	IEnumerator ShowLevelFailedPopUp()
 	{
-		yield return new WaitForSeconds(1.0f);
+		yield return new WaitForSeconds(1);
 		levelFailedPopUp.SetTrigger("ShowPopUp");
-		background.SetActive(true);
+		//background.SetActive(true);
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	IEnumerator ShowLevelCompletedPopUp()
 	{
-		yield return new WaitForSeconds(1.0f);
+		yield return new WaitForSeconds(1);
 		levelCompletedPopUp.SetTrigger("ShowPopUp");
-		background.SetActive(true);
+		//background.SetActive(true);
 	}
 }
 
